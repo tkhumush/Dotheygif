@@ -74,15 +74,14 @@ export async function fetchNotes(
   relays: string[]
 ): Promise<Event[]> {
   const pool = new SimplePool();
-  const oneMonthAgo = Math.floor(Date.now() / 1000) - 30 * 24 * 60 * 60;
   try {
     const events = await Promise.race([
       pool.querySync(relays, {
         kinds: [1],
         authors: [pubkeyHex],
-        since: oneMonthAgo,
+        limit: 1000,
       }),
-      new Promise<Event[]>((resolve) => setTimeout(() => resolve([]), POOL_TIMEOUT * 2)),
+      new Promise<Event[]>((resolve) => setTimeout(() => resolve([]), POOL_TIMEOUT * 4)),
     ]);
 
     return events || [];
