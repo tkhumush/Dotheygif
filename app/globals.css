@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0a0a0a;
+  color: #ededed;
+  min-height: 100vh;
+}
+
+/* Landing page */
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  text-align: center;
+}
+
+.landing-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.landing-subtitle {
+  color: #999;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  max-width: 400px;
+}
+
+/* Npub input */
+.npub-input-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.npub-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: #ededed;
+  font-size: 0.95rem;
+}
+
+.npub-input:focus {
+  outline: none;
+  border-color: #4ecdc4;
+}
+
+.npub-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: #4ecdc4;
+  color: #0a0a0a;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.npub-button:hover {
+  background: #3dbdb5;
+}
+
+.npub-error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Dashboard */
+.dashboard {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Profile card */
+.profile-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #222;
+  align-items: flex-start;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  min-width: 0;
+}
+
+.profile-name {
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-about {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+}
+
+.profile-nip05 {
+  color: #4ecdc4;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-npub {
+  color: #666;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+/* Chart */
+.chart-container {
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #222;
+  padding: 1.5rem;
+}
+
+.chart-title {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}
+
+/* Error */
+.error-card {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #222;
+}
+
+.error-card h2 {
+  color: #ff6b6b;
+  margin-bottom: 0.5rem;
+}
+
+.error-card p {
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.error-card a {
+  color: #4ecdc4;
+  text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .landing-title {
+    font-size: 2rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+  }
+}
