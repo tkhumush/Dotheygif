@@ -35,7 +35,8 @@ export default function GifPieChart({ withGif, withoutGif, total }: Props) {
             cy="50%"
             outerRadius={110}
             dataKey="value"
-            label={({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+            label={(props) => {
+              const { cx, cy, midAngle, innerRadius, outerRadius, percent } = props as {cx: number; cy: number; midAngle: number; innerRadius: number; outerRadius: number; percent: number};
               const RADIAN = Math.PI / 180;
               const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
               const x = cx + radius * Math.cos(-midAngle * RADIAN);
