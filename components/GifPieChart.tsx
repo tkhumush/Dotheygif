@@ -16,7 +16,7 @@ export default function GifPieChart({ withGif, withoutGif, total }: Props) {
   }
 
   const data = [
-    { name: "Contains .gif", value: withGif },
+    { name: "GIFs", value: withGif },
     { name: "Other notes", value: withoutGif },
   ];
 

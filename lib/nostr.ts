@@ -74,12 +74,13 @@ export async function fetchNotes(
   relays: string[]
 ): Promise<Event[]> {
   const pool = new SimplePool();
+  const oneMonthAgo = Math.floor(Date.now() / 1000) - 30 * 24 * 60 * 60;
   try {
     const events = await Promise.race([
       pool.querySync(relays, {
         kinds: [1],
         authors: [pubkeyHex],
-        limit: 500,
+        since: oneMonthAgo,
       }),
       new Promise<Event[]>((resolve) => setTimeout(() => resolve([]), POOL_TIMEOUT * 2)),
     ]);
@@ -91,6 +92,7 @@ export async function fetchNotes(
 }
 
 const GIF_REGEX = /https?:\/\/\S+\.gif(\?\S*)?/i;
+const GIF_SERVICE_REGEX = /https?:\/\/\S*(giphy\.com|tenor\.com|gfycat\.com|imgur\.com\/\S*gifv?)\S*/i;
 
 export function countGifs(events: Event[]): {
   withGif: number;
@@ -99,7 +101,7 @@ export function countGifs(events: Event[]): {
 } {
   let withGif = 0;
   for (const e of events) {
-    if (GIF_REGEX.test(e.content)) withGif++;
+    if (GIF_REGEX.test(e.content) || GIF_SERVICE_REGEX.test(e.content)) withGif++;
   }
   return { withGif, withoutGif: events.length - withGif, total: events.length };
 }
